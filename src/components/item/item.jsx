@@ -9,8 +9,11 @@ const Item = (props) => {
     const clicked = () => {
         props.checked(props.item.id);
     }
+    const onDelete = () => {
+        props.onDelete(props.item.id)
+    }
     return (
-        <div className={styles.container}>
+        <li className={styles.container}>
             <button className={styles.checkBtn} onClick={clicked}>
                 {
                     props.item.status===true ?
@@ -20,10 +23,10 @@ const Item = (props) => {
                 
             </button>
             <span className={props.item.status ? styles.contentT : styles.contentF}>{props.item.content}</span>
-            <button className={styles.deleteBtn}>
+            <button className={styles.deleteBtn} onClick={onDelete}>
                 <FontAwesomeIcon icon={faTrashAlt} size='2x'></FontAwesomeIcon>
             </button>
-        </div>
+        </li>
     );
 }
 

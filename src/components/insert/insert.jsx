@@ -6,15 +6,19 @@ const Insert = (props) => {
 
     const onEnter = (e) => {
         if(e.key === 'Enter') {
-            onSubmit();
+            onSubmit(e);
         }
     }
     const onSubmit = (e) => {
         e.preventDefault();
         const value = inputRef.current.value;
+        if(value === ''){
+            return;
+        } else {
         props.onAdd(value);
         inputRef.current.value = '';
-        inputRef.focus();
+        inputRef.current.focus();
+        }
     }
     return(
         <form className={styles.form}>
@@ -25,6 +29,7 @@ const Insert = (props) => {
                 placeholder='입력하세요'
                 ref={inputRef}
                 onKeyPress={onEnter}
+                autoComplete="off"
             />
             <button className={styles.submit} onClick={onSubmit}>
                 ADD

@@ -5,18 +5,8 @@ import List from './components/item-list/list';
 import Title from './components/title/title';
 
 function App() {
-  const [item, setItem] = useState([
-    {
-      id: 1,
-      content: 'Hello',
-      status: false,
-    },
-    {
-      id: 2,
-      content: 'Hi',
-      status: false,
-    },
-  ]);
+  const [item, setItem] = useState([]);
+  
   const onAdd = (value) => {
     const newItem = [...item,{id: Date.now(), content: value}];
     setItem(newItem);
@@ -31,11 +21,16 @@ function App() {
     setItem(newItem);
   }
 
+  const onDelete = (id) => {
+    const newItem = item.filter((item) => item.id !== id);
+    setItem(newItem);
+  }
+
   return (
     <div className={styles.container}>
       <Title />
       <Insert onAdd={onAdd}/>
-      <List item={item} checked={checked}/>
+      <List item={item} checked={checked} onDelete={onDelete}/>
     </div>
   );
 }

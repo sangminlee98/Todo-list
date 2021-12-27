@@ -1,0 +1,9 @@
+.container {
+  margin-top: 1em;
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+}

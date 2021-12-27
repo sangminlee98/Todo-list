@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  padding: 0.5em;
+  justify-content: center;
+}
+.checkBtn {
+  flex: 0.2;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.contentF {
+  flex: 0.6;
+  border: 1px solid black;
+  line-height: 2em;
+}
+
+.contentT {
+  flex: 0.6;
+  border: 1px solid black;
+  line-height: 2em;
+  background-color: lightgreen;
+}
+
+.deleteBtn {
+  flex: 0.2;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

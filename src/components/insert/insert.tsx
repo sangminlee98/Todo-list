@@ -1,23 +1,23 @@
 import React, { useRef } from 'react';
 import styles from './insert.module.css';
 
-const Insert = (props) => {
-    const inputRef = useRef();
+const Insert = (props: any) => {
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    const onEnter = (e) => {
+    const onEnter = (e:React.KeyboardEvent) => {
         if(e.key === 'Enter') {
             onSubmit(e);
         }
     }
-    const onSubmit = (e) => {
+    const onSubmit = (e:React.FormEvent) => {
         e.preventDefault();
-        const value = inputRef.current.value;
+        const value = inputRef.current!.value;
         if(value === ''){
             return;
         } else {
         props.onAdd(value);
-        inputRef.current.value = '';
-        inputRef.current.focus();
+        inputRef.current!.value = '';
+        inputRef.current!.focus();
         }
     }
     return(
@@ -35,7 +35,7 @@ const Insert = (props) => {
                 ADD
             </button>
         </form>
-    );
+    )
 }
 
 export default Insert;

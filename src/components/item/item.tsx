@@ -5,14 +5,14 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styles from './item.module.css';
 
-const Item = (props) => {
+const Item = (props:any) => {
     const clicked = () => {
         props.checked(props.item.id);
     }
     const onDelete = () => {
         props.onDelete(props.item.id)
     }
-    return (
+    return(
         <li className={styles.container}>
             <button className={styles.checkBtn} onClick={clicked}>
                 {
@@ -29,5 +29,4 @@ const Item = (props) => {
         </li>
     );
 }
-
 export default Item;

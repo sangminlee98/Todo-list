@@ -5,15 +5,20 @@ import List from './components/item-list/list';
 import Title from './components/title/title';
 
 function App() {
-  const [item, setItem] = useState([]);
-  
-  const onAdd = (value) => {
-    const newItem = [...item,{id: Date.now(), content: value}];
+  type Data = {
+    id: number;
+    content: string;
+    status: boolean;
+  }
+  const [item,setItem] = useState<Data[]>([]);
+
+  const onAdd = (value: string) => {
+    const newItem = [...item,{id: Date.now(), content: value, status: false}];
     setItem(newItem);
   }
 
-  const checked = (id) => {
-    const index = item.findIndex((item) => {
+  const checked = (id: number) => {
+    const index = item!.findIndex((item) => {
       return item.id === id;
     })
     const newItem = [...item];
@@ -21,14 +26,13 @@ function App() {
     setItem(newItem);
   }
 
-  const onDelete = (id) => {
+  const onDelete = (id: number) => {
     const newItem = item.filter((item) => item.id !== id);
     setItem(newItem);
   }
-
   return (
     <div className={styles.container}>
-      <Title />
+      <Title/>
       <Insert onAdd={onAdd}/>
       <List item={item} checked={checked} onDelete={onDelete}/>
     </div>

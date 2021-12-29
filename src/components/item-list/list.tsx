@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import Item from '../item/item';
 import styles from './list.module.css';
 
-const List = (props) => {
-    const ref = useRef();
+const List = (props: any) => {
+    const ref = useRef<HTMLDivElement>(null);
     useEffect(()=> {
-        ref.current.scrollIntoView({block:'end'});
+        ref.current!.scrollIntoView({block:'end'});
     })
     return(
         <ul className={styles.container}>
             {
-                props.item.map((item,key) => {
+                props.item.map((item:any,key:number) => {
                     return <Item item={item} key={key} checked={props.checked} onDelete={props.onDelete}/>
                 })
             }

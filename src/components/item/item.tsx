@@ -4,8 +4,14 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styles from './item.module.css';
+import { Data } from '../../App';
 
-const Item = (props:any) => {
+interface IProps {
+    item: Data,
+    checked: (id: number) => void;
+    onDelete: (id: number) => void;
+}
+const Item = (props:IProps) => {
     const clicked = () => {
         props.checked(props.item.id);
     }

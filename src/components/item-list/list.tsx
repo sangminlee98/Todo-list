@@ -1,8 +1,14 @@
 import React, { useEffect, useRef } from 'react';
+import { Data } from '../../App';
 import Item from '../item/item';
 import styles from './list.module.css';
 
-const List = (props: any) => {
+interface IProps {
+    item: Data[],
+    checked: (id: number) => void;
+    onDelete: (id: number) => void;
+}
+const List = (props: IProps) => {
     const ref = useRef<HTMLDivElement>(null);
     useEffect(()=> {
         ref.current!.scrollIntoView({block:'end'});

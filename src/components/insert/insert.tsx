@@ -1,7 +1,11 @@
 import React, { useRef } from 'react';
 import styles from './insert.module.css';
 
-const Insert = (props: any) => {
+interface IProps {
+    onAdd: (value: string)=> void;
+}
+
+const Insert = (props: IProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const onEnter = (e:React.KeyboardEvent) => {

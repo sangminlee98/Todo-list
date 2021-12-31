@@ -9,6 +9,7 @@ const Insert = (props: IProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const onEnter = (e:React.KeyboardEvent) => {
+        if(e.nativeEvent.isComposing) return;
         if(e.key === 'Enter') {
             onSubmit(e);
         }
@@ -32,7 +33,7 @@ const Insert = (props: IProps) => {
                 name='text'
                 placeholder='입력하세요'
                 ref={inputRef}
-                onKeyPress={onEnter}
+                onKeyDown={onEnter}
                 autoComplete="off"
             />
             <button className={styles.submit} onClick={onSubmit}>

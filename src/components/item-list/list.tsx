@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Data } from '../../App';
 import Item from '../item/item';
 import styles from './list.module.css';

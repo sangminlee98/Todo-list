@@ -5,5 +5,11 @@
 }
 
 body {
+  display: flex;
+  justify-content: center;
   background-color: beige;
+}
+
+li {
+  list-style-type: none;
 }

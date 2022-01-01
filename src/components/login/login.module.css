@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  width: 500px;
+  height: 500px;
+  margin-top: 50px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 20px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  margin-top: 50px;
+  margin-bottom: 130px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginBtn {
+  width: 25em;
+  height: 3em;
+  background-color: #eee;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 2em;
+  transition: all 0.3s ease-in;
+}
+
+.loginBtn:hover {
+  background-color: lightsalmon;
+  opacity: 0.8;
+}

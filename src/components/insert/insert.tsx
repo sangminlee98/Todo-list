@@ -15,7 +15,6 @@ const Insert = (props: IProps) => {
         }
     }
     const onSubmit = (e:React.FormEvent) => {
-        console.log(e);
         e.preventDefault();
         const value = inputRef.current!.value;
         if(value === ''){

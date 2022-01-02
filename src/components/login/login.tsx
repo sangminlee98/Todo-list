@@ -1,6 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Title from '../title/title';
+import React, { useEffect } from 'react';
+import {useNavigate } from 'react-router-dom';
 import styles from './login.module.css';
 
 const Login = (props: any) => {
@@ -12,6 +11,11 @@ const Login = (props: any) => {
         props.authService.login(event.currentTarget.textContent)
         .then((data: any) => goToMain(data.user.uid));
     }
+    useEffect(() => {
+        props.authService.onAuthChange((user: { uid: number; }) => {
+            user&&goToMain(user.uid);
+        })
+    })
     return (
         <div className={styles.container}>
             <h1 className={styles.header}>Login</h1>

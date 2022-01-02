@@ -1,21 +1,19 @@
 import { firebaseApp } from './firebase';
-
-import { FirebaseApp } from 'firebase/app';
 import { getAuth, 
         signInWithPopup,
         GoogleAuthProvider,
         GithubAuthProvider,
         Auth,
         UserCredential,
+        Unsubscribe,
 } from 'firebase/auth';
-
 class AuthService {
     firebaseAuth: Auth;
     googleProvider: GoogleAuthProvider;
     githubProvider: GithubAuthProvider;
 
-    constructor(currentAuth: FirebaseApp) {
-        this.firebaseAuth = getAuth(currentAuth);
+    constructor() {
+        this.firebaseAuth = getAuth(firebaseApp);
         this.googleProvider = new GoogleAuthProvider();
         this.githubProvider = new GithubAuthProvider();
     };
@@ -29,10 +27,11 @@ class AuthService {
         this.firebaseAuth.signOut();
     }
 
-    onAuthChange(onUserChanged: Function) {
-        this.firebaseAuth.onAuthStateChanged( user => {
+    onAuthChange(onUserChanged: Function): Unsubscribe {
+        const unsubscribe = this.firebaseAuth.onAuthStateChanged( user => {
             onUserChanged(user);
         })
+        return unsubscribe;
     }
 
     getProvider(providerName: string): GoogleAuthProvider | GithubAuthProvider {
